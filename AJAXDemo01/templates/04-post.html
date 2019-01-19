@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <button onclick="btnAjax()">发送POST请求</button>
+        <div id="show"></div>
+        <script src="/static/js/common.js"></script>
+        <script>
+            function btnAjax() {
+                //1.获取xhr
+                var xhr = createXhr()
+                //2.创建请求 - post
+                xhr.open('post','/04-server',true)
+                //3.设置回调函数
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState ==4 && xhr.status==200){
+                        document.getElementById('show').innerHTML = xhr.responseText
+                    }
+                }
+                //修改请求消息头
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                //4.发送请求-传递uname和age参数到服务器
+                params = 'uname=wangwc&age=35'
+                xhr.send(params)
+            }
+
+        </script>
+</body>
+</html>

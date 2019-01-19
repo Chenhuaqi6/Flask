@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<body>-->
+        <!--<script>-->
+            <!--var obj = {-->
+                <!--"name":"王夫人",-->
+                <!--"age":40,-->
+                <!--"gender":"男",-->
+                <!--"hobby":"王老师"-->
+            <!--}-->
+            <!--console.log(obj.name)-->
+            <!--console.log(obj.age)-->
+            <!--console.log(obj.gender)-->
+            <!--console.log(obj.hobby)-->
+        <!--</script>-->
+<script src="jquery-1.11.3.js"></script>
+        <script>
+            var arr = [
+                {
+                    "name":"王老师",
+                    "age":40,
+                    "gender":"男"
+
+
+                },
+                {
+                     "name":"王夫人",
+                    "age":35,
+                    "gender":"男"
+
+                },
+                {
+                  "name":"王小超",
+                    "age":12,
+                    "gender":"男"
+
+
+                }
+
+                ];
+            //使用 jq中的 $arr.each() 循环遍历 arr 数组
+            //现将 arr 转换成 jq 的数组 - $(arr)
+//            $(arr).each(function (i,obj) {
+//                console.log("第"+(i+1)+"个元素")
+//                console.log("姓名:"+obj.name)
+//                console.log("年龄:"+obj.age)
+//                console.log("性别:"+obj.gender)
+//
+//            });
+            $.each(arr,function (i,obj) {
+                console.log("第"+(i+1)+"个元素")
+                console.log("姓名:"+obj.name)
+                console.log("年龄:"+obj.age)
+                console.log("性别:"+obj.gender)
+
+            });
+
+
+
+
+//            for(var i=0;i<arr.length;i++){
+//                var obj = arr[i]
+//                console.log(obj.name)
+//                console.log(obj.age)
+//                console.log(obj.gender)
+//            }
+        </script>
+</body>
+</html>

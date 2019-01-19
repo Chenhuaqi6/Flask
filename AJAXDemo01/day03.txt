@@ -1,0 +1,85 @@
+复习:
+    1.使用AJAX发送POST请求
+        1.发送的数据放在 send() 中
+            xhr.send('uname=xxx&uage=xxx')
+        2.设置 Content-Type 的请求消息头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+
+    2.JSON
+        1.什么是JSON
+            JavaScript Object Notation
+        2.JSON 格式
+            1.JSON表示单个对象
+                1.使用 {} 来表示单个对象
+                2.在 {} 中使用 key:value 的形式来表示属性(数据)
+                3.key 必须使用 ""
+                4.value 如果是字符串的话,也必须使用 "" 引起来
+                5.多对 key:value 之间使用 , 隔开
+            2.JSON表示一组对象
+                使用[]表示一组对象
+                1.["","",""]
+                2.使用[]表示若干JS对象
+                  [
+                  {
+                    "key":"value",
+                    "key":"value"
+                  },
+                  {
+                    "key":"value",
+                    "key":"value"
+
+                  }
+
+                  ]
+            3.在jq中提供的循环遍历的方法
+                1.$arr.each(function(i,obj){})
+                    $arr : 表示的是jq的数组
+                2.$.each(arr,function(i,obj){})
+                    arr :　表示的是原生的js数组
+==============================================
+1.使用 jQuery 操作 AJAX
+    1.$obj.load(url[,data][,callback])
+        作用:远程加载数据并加载到$obj元素中
+        url:远程请求的地址
+        data:要传递的参数
+            1.字符串拼接参数,采用 get 方式发送请求
+            2.使用 JSON 格式拼参数,采用 post 方式发送请求
+        callback: 请求和响应完成之后的回调函数
+            function(resText,statusText){
+                resTxt:响应回来的文本
+                statusText : 响应会来的状态文本
+            }
+
+    2.$.get(url[,data][,callback][,type])
+        作用:使用 get 方式异步的向服务器发送请求
+        url: 远程请求地址
+        data: 请求参数(可选)
+        callback:响应成功后的回调函数(建议写)
+            function(resText){
+                resText :　表示响应回来的数据
+            }
+        type: 响应回来的数据的数据类型
+            1.html: 响应回来的文本当成HTML文本处理
+            2.text: 响应回来的文本当成text文本处理
+            3.json: 响应回来的文本当成JSON进行处理(转换成JS对象)
+    3.$.post(url[,data][,callback][,type])
+        各参数作用同 $.get
+
+    练习:
+        通过 Login 实体,验证
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

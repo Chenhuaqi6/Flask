@@ -1,0 +1,86 @@
+2.JSON
+    JSON : JavaScript Object Notation
+            JS         对象    表现形式
+
+        将复杂结构的字符串转换成JS对象的表现形式,方便前段解析
+
+    2.JOSN的表现
+        1.JSON表示单个对象
+            1.使用{}表示一个对象
+            2.在{}中使用key:value的形式来表示属性(数据)
+            3.key必须使用""(必须双引号)引起来
+            4.value如果是字符串的话,也必须使用""引起来
+            5.多对 key:value之间用 , 隔开
+           练习:
+                创建一个对象表示 王老师的夫人(王夫人)
+                1.姓名:王夫人
+                2.年龄:40
+                3.性别:男
+                4.爱好:王老师
+        2.使用JSON表示一个数组
+            1.使用[]来表示一个数组
+            2.数组中允许包含若干个字符串,或者 JS对象
+                1.使用JOSN数组来表示若干字符串
+                    var arr = ["王老师","王夫人","王小超"]
+                2.使用JOSN数组来表示若干对象
+                通过一个数组保存3个人的信息(name,age,gender)
+                var arr = [
+                {
+                    "name":"王老师",
+                    "age":40,
+                    "gender":"男"
+
+
+                },
+                {
+                     "name":"王夫人",
+                    "age":35,
+                    "gender":"男"
+
+                },
+                {
+                  "name":"王小超",
+                    "age":12,
+                    "gender":"男"
+
+
+                }
+
+                ];
+        3.使用 jq 循环遍历数组
+            1.$arr.each()
+                $arr : jQuery中的数组
+                语法:
+                    $arr.each(function(i,obj){
+                    i:遍历出来的元素下标
+                    obj:遍历出来的元素
+                    });
+            2.$.each()
+              $ -> jQuery
+              语法:$.each(arr,function(i,obj){
+
+
+              });
+
+        4.后台处理JSON
+            1.前后端 JSON 的处理流程
+                1.在后端先查询出/得到复杂结构的数据
+                2.在后端将复杂结构的数据转换成符合JSON格式的字符串
+                3.在后端将JSON格式的字符串响应给前端
+                4.在前端将JSON格式的字符串再次转换为js对象/数组
+                5.在前端对js对象/数组 进行循环遍历/取值操作
+
+            2.Python中的JSON处理
+                在Python中可以使用json 类 完成JSON的转换
+
+                import json
+                jsonStr = josn.dumps(元组|列表|字典)
+                return jsonStr
+            3.前端中的JSON处理
+                由于服务器端响应回来的数据是String,所以在前端对复杂结构的数据必须先转换成JS对象或数据,
+                然后再取值或循环遍历
+                    在 JS 中:
+                    var js对象 = JSON.parse(JSON字符串)
+
+
+

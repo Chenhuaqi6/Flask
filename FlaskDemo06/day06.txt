@@ -1,0 +1,20 @@
+基于 实体类 的查询
+
+
+1.查询 - c
+    1.聚合查询
+    #查询表中所有的用户的年龄(uage)的和是多少
+    from sqlalchemy import func
+    # func对象中提供了所有的聚合函数
+    db.session.query(func.聚合函数(User.uage)).all()
+        聚合函数:
+            sum() : 求和
+            count() :求非空的数量
+            max() : 最大值
+            min() : 最小值
+            avg() : 求平均值
+
+    #查询user表中所有人的平均年龄(uage)是多少??
+    db.session.query(func.avg(User.uage)).first()
+
+    select sum(uage) as 'sumAge',avg(uage) as 'avgAge' from user group by id

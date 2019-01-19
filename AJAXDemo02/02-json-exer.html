@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var arr = [
+        {
+        "name":"王老师",
+        "age":40,
+        "gender":"男"
+
+
+        },
+        {
+         "name":"王夫人",
+        "age":35,
+        "gender":"男"
+
+        },
+        {
+        "name":"王小超",
+        "age":12,
+        "gender":"男"
+
+
+        }
+
+    ];
+
+
+    $(function () {
+        $("#btnShow").click(function () {
+            var html = "";
+            //循环遍历 arr 中的每一个元素以及属性
+            //将遍历出来的内容拼接到html之后
+            $.each(arr,function (i,obj) {
+                html += "<tr>"
+                    html += "<td>"+obj.name+"</td>td>"
+                    html += "<td>"+obj.age+"</td>td>"
+                    html += "<td>"+obj.gender+"</td>td>"
+
+                html += "</tr>"
+            })
+            $("#content").html(html)
+        })
+    })
+</script>
+        <button id="btnShow">显示</button>
+        <table width="400" border="1">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+
+            </tbody>
+        </table>
+</body>
+</html>

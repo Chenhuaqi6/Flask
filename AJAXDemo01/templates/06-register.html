@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            $('[name="loginname"]').blur(function () {
+                //1.获取xhr
+                var xhr = createXhr()
+                //2.创建请求
+                //this永远指向DOM
+                var lname = this.value;
+                var url = '/06-server?lname='+lname;
+                xhr.open('get',url,true)
+                //3.设置回调函数
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4 &&xhr.status == 200){
+                        $('#loginNameShow').html(xhr.responseText);
+                    }
+                }
+                //4.发送请求
+                xhr.send(null);
+            })
+        })
+    </script>
+</head>
+<body>
+<form action="" method="post">
+    <p>
+        登录名称: <input type="text" name="loginname">
+        <span id="loginNameShow"></span>
+    </p>
+    <p>
+        登录密码: <input type="password" name="loginpwd">
+    </p>
+    <p>
+        用户名称: <input type="text" name="uname">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+
+</form>
+</body>
+</html>

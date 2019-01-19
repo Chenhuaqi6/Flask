@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            function check_login() {
+                //ret 默认值为false 表示用户名不存在
+                var ret = false;
+                var url = '/05-login'
+                var params = "lname="+$("#lname").val()
+                $.ajax({
+                    url:url,
+                    data:params,
+                    type:'get',
+                    dataType:'json',
+                    async:false,
+                    success:function(data){
+                        if (data.status == 1){
+                            $("#lname-show").html(data.text)
+                            //表示用户名存在
+                            ret = true
+
+                        }else{
+                            $("#lname-show").html(data.text)
+
+
+                        }
+                    }
+                })
+                return ret
+            }
+            //为lname绑定blur事件
+            $("#lname").blur(check_login)
+            //为#btnReg绑定click事件
+            $("#btnReg").click(function () {
+                var ret = check_login()
+                if(ret){
+                    alert('用户名存在,不可注册')
+                }else{
+                    var params = {
+                        'lname':$("#lname").val(),
+                        'lpwd':$("#lpwd").val(),
+                        'uname':$("#uname").val(),
+                    }
+                    $.post('/05-server',params,function (data) {
+                        if(data.status == 1){
+                            alert(data.text)
+                            //可接其他页面
+                        }else{
+                            alert(data.text)
+                        }
+                    },'json')
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div>
+        <p>
+            登录名称: <input type="text" id="lname">
+            <span id="lname-show"></span>
+        </p>
+        <p>
+            登录密码: <input type="password" id="lpwd">
+        </p>
+        <p>
+            用户名称: <input type="text" id="uname">
+        </p>
+        <p>
+            <button id="btnReg">注册</button>
+        </p>
+    </div>
+</body>
+</html>

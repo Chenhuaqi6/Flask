@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script>
+        $(function () {
+            $("#btnShow").click(function () {
+                var xhr = createXhr()
+                xhr.open('get','/00-server',true)
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState == 4 && xhr.status==200){
+                        var arr = JSON.parse(xhr.responseText)
+                        var html = "";
+                        $.each(arr,function(i,obj){
+                            html+="<tr>";
+                                html += "<td>"+obj.id+"</td>";
+                                html += "<td>"+obj.loginname+"</td>";
+                                html += "<td>"+obj.loginpwd+"</td>";
+                                html += "<td>"+obj.username+"</td>";
+                            html+="</tr>";
+                            $("#tt").html(html)
+                        })
+                    }
+                }
+                xhr.send(null)
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="btnShow">显示所有</button>
+    <table width="400" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>loginname</th>
+                <th>loginpwd</th>
+                <th>username</th>
+            </tr>
+        </thead>
+        <tbody id="tt"></tbody>
+        </table>
+</body>
+</html>
